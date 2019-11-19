@@ -14,7 +14,11 @@ exports.up = function(knex) {
 			.references('id')
 			.inTable('students');
 		messages.string('text').notNullable();
-		messages.boolean('send_to_self');
+		messages
+			.boolean('send_to_self')
+			.defaultTo(false)
+			.notNullable();
+		messages.string('timestamp', 128).notNullable();
 	});
 };
 
