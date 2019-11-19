@@ -7,10 +7,12 @@ const messagesRouter = require('./messages/messages-router');
 const server = express();
 server.use(express.json());
 server.use('/api/users', usersRouter);
-server.use('/api/students', studentsRouter);
-server.use('/api/projects', projectsRouter);
-server.use('/api/messages', messagesRouter);
+//server.use('/api/students', studentsRouter);
+//server.use('/api/projects', projectsRouter);
+//server.use('/api/messages', messagesRouter);
 
 server.get('/', (req, res) => {
-	res.send(`<h2>Welcome to Better Professor App API</h2>`);
+	res.send(`<h1>Welcome to Better Professor App API</h1>`);
 });
+
+module.exports = server;
