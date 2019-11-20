@@ -41,7 +41,7 @@ router.get('/:id/students', validateUserId, async (req, res) => {
 		.catch(error => {
 			res
 				.status(500)
-				.json({ message: 'Unable to retrieve posts for this user.' });
+				.json({ message: 'Unable to retrieve students for this user.' });
 		});
 });
 
