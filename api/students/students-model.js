@@ -21,7 +21,7 @@ function getById(id) {
 
 function insert(student) {
 	return db('students')
-		.insert(student)
+		.insert(student, 'id')
 		.then(ids => {
 			return getById(ids[0]);
 		});
@@ -42,6 +42,6 @@ function remove(id) {
 function getStudentProjects(studentId) {
 	return db('projects as p')
 		.join('students as s', 's.id', 'p.student_id')
-		.select('p.id', 'p.project', 'p.project_type', 'p.deadline', 's.id')
+		.select('p.id', 'p.project', 'p.project_type', 'p.deadline')
 		.where('p.student_id', studentId);
 }

@@ -20,7 +20,7 @@ function getById(id) {
 
 function insert(project) {
 	return db('projects')
-		.insert(project)
+		.insert(project, 'id')
 		.then(ids => {
 			return getById(ids[0]);
 		});

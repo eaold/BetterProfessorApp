@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Get all of a user's students.
-router.get('/:id/students', validateUserId, (req, res) => {
+router.get('/:id/students', (req, res) => {
 	const id = req.params.id;
 	User.getUserStudents(id)
 		.then(data => {
@@ -47,7 +47,7 @@ router.get('/:id/students', validateUserId, (req, res) => {
 });
 
 // Add student to a user.
-router.post('/:id/students', validateUserId, validateStudent, (req, res) => {
+router.post('/:id/students', validateStudent, (req, res) => {
 	const id = req.params.id;
 	const studentData = req.body;
 
@@ -62,38 +62,6 @@ router.post('/:id/students', validateUserId, validateStudent, (req, res) => {
 		})
 		.catch(error => {
 			res.status(500).json({ message: 'Unable to add student.' });
-		});
-});
-
-// Update a user.
-router.put('/:id', validateUserId, validateUser,  (req, res) => {
-	const id = req.params.id;
-	const userData = req.body;
-
-	User.update(id, userData)
-		.then(data => {
-			User.getById(id).then(data => {
-				res.status(201).json(data);
-			});
-		})
-		.catch(error => {
-			res.status(500).json({ message: 'Unable to update user.' });
-		});
-});
-
-// Delete a user.
-router.delete('/:id', validateUserId, (req, res) => {
-	const id = req.params.id;
-
-	User.remove(id)
-		.then(data => {
-			res.status(200).json({
-				message: `User with id of ${id} has been successfully deleted`,
-				data
-			});
-		})
-		.catch(error => {
-			res.status(500).json({ message: `Unable to delete user.` });
 		});
 });
 
