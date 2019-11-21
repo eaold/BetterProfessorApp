@@ -1,3 +1,5 @@
+const User = require('../api/users/users-model');
+
 async function validateUserId(req, res, next) {
 	const id = req.params.id;
 
