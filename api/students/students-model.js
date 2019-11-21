@@ -21,7 +21,7 @@ function getById(id) {
 
 function insert(student) {
 	return db('students')
-		.insert(student)
+		.insert(student, 'id')
 		.then(ids => {
 			return getById(ids[0]);
 		});
