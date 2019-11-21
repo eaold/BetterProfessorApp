@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // Get student by ID.
-router.get('/:id', (req, res) => {
+router.get('/:id', validateStudentId, (req, res) => {
 	const id = req.params.id;
 
 	Student.getById(id)
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Get all of a student's projects.
-router.get('/:id/projects', (req, res) => {
+router.get('/:id/projects', validateStudentId, (req, res) => {
 	const id = req.params.id;
 	Student.getStudentProjects(id)
 		.then(data => {
@@ -46,7 +46,7 @@ router.get('/:id/projects', (req, res) => {
 });
 
 // Add project to a student.
-router.post('/:id/projects', validateProject, (req, res) => {
+router.post('/:id/projects', validateStudentId, validateProject, (req, res) => {
 	const id = req.params.id;
 	const projectData = req.body;
 
@@ -56,12 +56,12 @@ router.post('/:id/projects', validateProject, (req, res) => {
 		deadline: projectData.deadline,
 		student_id: id
 	})
-	.then(data => {
-		res.status(201).json(data);
-	})
-	.catch(error => {
-		res.status(500).json({message: 'Unable to add project.'})
-	})
+		.then(data => {
+			res.status(201).json(data);
+		})
+		.catch(error => {
+			res.status(500).json({ message: 'Unable to add project.' });
+		});
 });
 
 // Update a student.
@@ -81,7 +81,7 @@ router.put('/:id', validateStudentId, validateStudent, (req, res) => {
 });
 
 // Delete a student.
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateStudentId, (req, res) => {
 	const id = req.params.id;
 
 	Student.remove(id)

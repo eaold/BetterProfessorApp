@@ -1,3 +1,5 @@
+const Project = require('../api/projects/projects-model');
+
 async function validateProjectId(req, res, next) {
 	const id = req.params.id;
 

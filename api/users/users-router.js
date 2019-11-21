@@ -2,7 +2,6 @@ const router = require('express').Router();
 const User = require('./users-model');
 const Student = require('../students/students-model');
 const validateUserId = require('../../middleware/validateUserID');
-const validateUser = require('../../middleware/validateUser');
 const validateStudent = require('../../middleware/validateStudent');
 
 // Get all users.
@@ -19,7 +18,7 @@ router.get('/', (req, res) => {
 });
 
 // Get user by ID.
-router.get('/:id', (req, res) => {
+router.get('/:id', validateUserId, (req, res) => {
 	const id = req.params.id;
 	User.getById(id)
 		.then(data => {
@@ -33,7 +32,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Get all of a user's students.
-router.get('/:id/students', (req, res) => {
+router.get('/:id/students', validateUserId, (req, res) => {
 	const id = req.params.id;
 	User.getUserStudents(id)
 		.then(data => {
@@ -47,7 +46,7 @@ router.get('/:id/students', (req, res) => {
 });
 
 // Add student to a user.
-router.post('/:id/students', validateStudent, (req, res) => {
+router.post('/:id/students', validateUserId, validateStudent, (req, res) => {
 	const id = req.params.id;
 	const studentData = req.body;
 

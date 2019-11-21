@@ -1,3 +1,5 @@
+const Student = require('../api/students/students-model');
+
 async function validateStudentId(req, res, next) {
 	const id = req.params.id;
 

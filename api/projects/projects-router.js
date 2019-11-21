@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // Get project by ID.
-router.get('/:id', (req, res) => {
+router.get('/:id', validateProjectId, (req, res) => {
 	const id = req.params.id;
 
 	Project.getById(id)
@@ -48,7 +48,7 @@ router.put('/:id', validateProjectId, validateProject, (req, res) => {
 });
 
 // Delete a project.
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateProjectId, (req, res) => {
 	const id = req.params.id;
 
 	Project.remove(id)
