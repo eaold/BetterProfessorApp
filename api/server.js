@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-
+const { authenticate } = require('./auth/authentication-helpers');
 
 const authRouter = require('./auth/auth-router');
 const usersRouter = require('./users/users-router');
@@ -17,9 +17,9 @@ server.use(helmet());
 server.use(cors());
 
 server.use('/auth', authRouter);
-server.use('/api/users', usersRouter);
-server.use('/api/students', studentsRouter);
-server.use('/api/projects', projectsRouter);
+server.use('/api/users', authenticate, usersRouter);
+server.use('/api/students', authenticate, studentsRouter);
+server.use('/api/projects', authenticate, projectsRouter);
 //server.use('/api/messages', messagesRouter);
 
 server.get('/', (req, res) => {
