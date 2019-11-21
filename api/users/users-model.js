@@ -3,7 +3,7 @@ const db = require('../../data/db.js');
 module.exports = {
 	get,
 	getById,
-	getBy,
+	getByUsername,
 	insert,
 	update,
 	remove,
@@ -20,9 +20,9 @@ function getById(id) {
 		.first();
 }
 
-function getBy(filter) {
+function getByUsername(username) {
 	return db('users')
-		.where(filter)
+		.where({username})
 		.first();
 }
 

@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../users/users-model');
 const router = express.Router();
 const validateUser = require('../../middleware/validateUser');
-const generateJWT = require('./authentication-helpers');
+const { generateJWT } = require('./authentication-helpers');
 
 // User Registration
 router.post('/register', validateUser, (req, res) => {
@@ -24,11 +24,10 @@ router.post('/register', validateUser, (req, res) => {
 router.post('/login', validateUser, (req, res) => {
 	const { username, password } = req.body;
 
-	User.getBy({ username })
+	User.getByUsername(username)
 		.then(user => {
 			if (user && bcrypt.compareSync(password, user.password)) {
 				const token = generateJWT(user);
-
 				res.status(200).json({
 					message: `Welcome back, ${user.username}!`,
 					token: token

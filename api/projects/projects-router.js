@@ -48,10 +48,10 @@ router.put('/:id', validateProjectId, validateProject, (req, res) => {
 });
 
 // Delete a project.
-router.delete('/:id', validateProjectId, (req, res) => {
+router.delete('/:id', (req, res) => {
 	const id = req.params.id;
 
-	Prokect.remove(id)
+	Project.remove(id)
 		.then(data => {
 			res.status(200).json({
 				message: `Project with id of ${id} has been successfully deleted.`,
