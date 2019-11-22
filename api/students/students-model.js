@@ -30,7 +30,7 @@ function insert(student) {
 function update(id, changes) {
 	return db('students')
 		.where({ id })
-		.update({ changes });
+		.update( changes );
 }
 
 function remove(id) {

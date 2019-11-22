@@ -24,7 +24,7 @@ router.post('/register', validateUser, (req, res) => {
 router.post('/login', validateUser, (req, res) => {
 	const { username, password } = req.body;
 
-	User.getByUsername(username)
+	User.getBy({username})
 		.then(user => {
 			if (user && bcrypt.compareSync(password, user.password)) {
 				const token = generateJWT(user);

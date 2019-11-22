@@ -3,10 +3,8 @@ const db = require('../../data/db.js');
 module.exports = {
 	get,
 	getById,
-	getByUsername,
+	getBy,
 	insert,
-	update,
-	remove,
 	getUserStudents
 };
 
@@ -20,9 +18,9 @@ function getById(id) {
 		.first();
 }
 
-function getByUsername(username) {
+function getBy(filter) {
 	return db('users')
-		.where({username})
+		.where(filter)
 		.first();
 }
 
@@ -32,18 +30,6 @@ function insert(user) {
 		.then(ids => {
 			return getById(ids[0]);
 		});
-}
-
-function update(id, changes) {
-	return db('users')
-		.where({ id })
-		.update({ changes });
-}
-
-function remove(id) {
-	return db('users')
-		.where({ id })
-		.del();
 }
 
 function getUserStudents(userId) {
