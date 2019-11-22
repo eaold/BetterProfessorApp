@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1574423675768" clover="3.2.0">
+  <project timestamp="1574423675769" name="All files">
+    <metrics statements="15" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="6" elements="25" coveredelements="21" complexity="0" loc="15" ncloc="15" packages="3" files="3" classes="3"/>
+    <package name="BetterProfessorApp">
+      <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="knexfile.js" path="C:\Users\emily\Lambda\BetterProfessorApp\knexfile.js">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="BetterProfessorApp.api.users">
+      <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
+      <file name="users-model.js" path="C:\Users\emily\Lambda\BetterProfessorApp\api\users\users-model.js">
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="BetterProfessorApp.data">
+      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
+      <file name="db.js" path="C:\Users\emily\Lambda\BetterProfessorApp\data\db.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
