@@ -72,7 +72,7 @@ router.put('/:id', validateStudentId, validateStudent, (req, res) => {
 	Student.update(id, studentData)
 		.then(data => {
 			Student.getById(id).then(data => {
-				res.status(201).json(data);
+				res.status(200).json(data);
 			});
 		})
 		.catch(error => {

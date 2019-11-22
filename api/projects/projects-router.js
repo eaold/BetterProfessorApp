@@ -39,7 +39,7 @@ router.put('/:id', validateProjectId, validateProject, (req, res) => {
 	Project.update(id, projectData)
 		.then(data => {
 			Project.getById(id).then(data => {
-				res.status(201).json(data);
+				res.status(200).json(data);
 			});
 		})
 		.catch(error => {
